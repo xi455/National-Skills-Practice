@@ -1,0 +1,47 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.content {
+    margin-top: 80vh;
+    min-height: 80vh;
+    background-color: rgb(42, 38, 56);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* z-index: 1; */
+    position: relative;
+}
+
+.m_box,
+.p_box {
+    width: 50%;
+    height: 300px;
+    border: 3px solid green;
+    background-color: #fff;
+
+    margin-top: 12px;
+    /* margin-bottom: 30px; */
+}
+
+.p_box {
+    border: 3px solid rgb(82, 58, 103);
+
+}
+
+.msg,
+.post {
+    padding: 8px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 3px;
+    background-color: green;
+}
+
+.post {
+    background-color: rgb(82, 58, 103);
+}

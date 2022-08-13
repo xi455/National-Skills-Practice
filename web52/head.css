@@ -1,0 +1,68 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.header {
+    width: 100%;
+
+    top: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+.head {
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.title {
+    width: 100%;
+    background-color: black;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    top: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+.title>span {
+    margin-right: 50px;
+}
+
+.title>span>a {
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+}
+
+.title>span>a:hover {
+    color: green;
+}
+
+
+.head>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.head>h1 {
+    font-weight: bold;
+    font-size: 96px;
+    color: white;
+    text-shadow: 5px 3px 0px rgb(192, 130, 223);
+
+    position: absolute;
+    left: 10%;
+    bottom: 26%;
+}
