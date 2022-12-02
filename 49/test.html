@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #on,
+    #down {
+        display: flex;
+        /* flex-direction: column; */
+    }
+
+    .card {
+        border: 1px solid #333;
+        border-radius: 10px;
+        width: 150px;
+        height: 230px;
+        font-size: 72px;
+        color: rgb(243, 246, 194);
+        margin: 10px;
+        background-color: rgb(243, 246, 194);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card_color {
+        color: #333;
+    }
+
+    .ans_color {
+        color: #333;
+    }
+</style>
+
+<body>
+    <div id="on"></div>
+    <div id="down"></div>
+    <button onclick="flop()">全翻</button>
+</body>
+
+<script>
+    let card_array = ['E']
+    let card_temporary = []
+    let num_temporary = []
+    let pass = 0
+    let english_array = []
+
+    function flop() {
+        $('.card').toggleClass('card_color')
+    }
+
+    for (let i = 65; i <= 90; i++) {
+        english_array.push(String.fromCharCode(i))
+    }
+
+    for (let i = 0; i < 3; i++) {
+        card_array.push(english_array[parseInt(Math.random() * english_array.length)])
+    }
+    console.log(card_array)
+    card_array = card_array.sort(() => Math.random() - 0.5);
+
+    card_array.forEach(element => {
+        $('#on').append(`
+            <div class="card" data-num="${element}">${element}</div>
+        `)
+    });
+
+    card_array = card_array.sort(() => Math.random() - 0.5);
+
+    card_array.forEach(element => {
+        $('#down').append(`
+            <div class="card" data-num="${element}">${element}</div>
+        `)
+    });
+
+    $('.card').click(function () {
+        $(this).toggleClass("card_color")
+
+        card_temporary.push($(this).text())
+        num_temporary.push($(this))
+
+        if (card_temporary.length == 2) {
+            if (card_temporary[0] == card_temporary[1]) {
+                $(num_temporary[0]).toggleClass("ans_color")
+                $(num_temporary[1]).toggleClass("ans_color")
+
+                if (card_temporary[0] == 'E' && card_temporary[1] == 'E') {
+                    alert('pass')
+                }
+
+                pass += 1
+                console.log(pass)
+            } else {
+                $(num_temporary[0]).toggleClass("card_color")
+                $(num_temporary[1]).toggleClass("card_color")
+            }
+            num_temporary = []
+            card_temporary = []
+
+        }
+
+        if (pass == 4) {
+            alert('pass')
+        }
+    })
+
+</script>
+
+</html>
